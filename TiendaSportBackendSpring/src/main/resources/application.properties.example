@@ -1,0 +1,32 @@
+# ============================================================
+# EJEMPLO de configuración. No contiene secretos reales.
+# Los valores reales se definen como VARIABLES DE ENTORNO
+# (en tu PC, en el IDE, o en Render > Environment).
+# ============================================================
+
+# --- Obligatoria: sin esta variable la aplicación no arranca ---
+# Genera una clave larga y aleatoria, por ejemplo en PowerShell:
+#   [Convert]::ToBase64String((1..48 | ForEach-Object { Get-Random -Maximum 256 }) -as [byte[]])
+JWT_SECRET=pon-aqui-una-clave-aleatoria-de-minimo-32-caracteres
+
+# --- Base de datos (Aiven u otra) ---
+SPRING_DATASOURCE_URL=jdbc:mysql://HOST:PUERTO/NOMBRE_BD?sslMode=REQUIRED&serverTimezone=UTC
+SPRING_DATASOURCE_USERNAME=usuario
+SPRING_DATASOURCE_PASSWORD=contraseña-de-la-base-de-datos
+
+# --- Opcionales ---
+ALLOWED_ORIGINS=http://localhost:3000
+JWT_EXPIRATION_MS=14400000
+SHOW_SQL=false
+DDL_AUTO=validate
+
+# --- Correos de pedidos (opcionales; sin esto la tienda funciona pero no se envían correos) ---
+# Dirección que aparece como remitente (debe estar verificada en tu proveedor de correo)
+MAIL_FROM=tiendasport@gmail.com
+# Opción A (funciona también en Render gratis): API de Brevo
+BREVO_API_KEY=pon-aqui-tu-clave-api-de-brevo
+# Opción B (SMTP, por ejemplo Gmail con contraseña de aplicación). No funciona en Render gratis.
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=tiendasport@gmail.com
+MAIL_PASSWORD=contraseña-de-aplicacion-de-16-letras
